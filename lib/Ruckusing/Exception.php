@@ -34,7 +34,6 @@ class Ruckusing_Exception extends Exception
     const INVALID_MIGRATION_DIR = 110;
     const INVALID_FRAMEWORK = 111;
     const QUERY_ERROR = 112;
-    const INVALID_MIGRATION_METHOD = 113;
 
     /**
      * Redefine the exception so message isn't optional
@@ -48,7 +47,11 @@ class Ruckusing_Exception extends Exception
     public function __construct($message, $code = 0, Exception $previous = null)
     {
         // make sure everything is assigned properly
-        parent::__construct($message, $code, $previous);
+        if (version_compare(PHP_VERSION, '5.3.0', '>=')) {
+            parent::__construct($message, $code, $previous);
+        } else {
+            parent::__construct($message, $code);
+        }
     }
 
     /**
