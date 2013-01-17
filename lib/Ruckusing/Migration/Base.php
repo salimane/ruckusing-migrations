@@ -29,22 +29,6 @@ class Ruckusing_Migration_Base
     private $_adapter;
 
     /**
-     * __call
-     *
-     * @param string $name The method name
-     * @param array  $args The parameters of method called
-     *
-     * @throws Ruckusing_Exception
-     */
-    public function __call($name, $args)
-    {
-        throw new Ruckusing_Exception(
-                'Method unknown (' . $name . ')',
-                Ruckusing_Exception::INVALID_MIGRATION_METHOD
-        );
-    }
-
-    /**
      * __construct
      *
      * @param Ruckusing_Adapter_Base $adapter the current adapter
